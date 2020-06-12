@@ -11,11 +11,11 @@ from __future__ import absolute_import
 import octoprint.plugin
 import octoprint.server
 
-class Marlin_eeprom_editorPlugin(octoprint.plugin.AssetPlugin,
+class Marlin_eepromPlugin(octoprint.plugin.AssetPlugin,
                             octoprint.plugin.TemplatePlugin):
     def get_assets(self):
         return dict(
-            js=["js/marlin_eeprom_editor.js"]
+            js=["js/marlin_eeprom.js"]
         )
 
     def get_template_configs(self):
@@ -44,7 +44,7 @@ __plugin_name__ = "Marlin EEPROM Editor Plugin"
 
 def __plugin_load__():
     global __plugin_implementation__
-    __plugin_implementation__ = Marlin_eeprom_editorPlugin()
+    __plugin_implementation__ = Marlin_eepromPlugin()
 
     global __plugin_hooks__
     __plugin_hooks__ = {

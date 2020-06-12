@@ -103,7 +103,7 @@ $(function() {
         self.eepromDataLinear = ko.observableArray([]);
 
         self.onStartup = function() {
-            $('#settings_plugin_eeprom_marlin_link a').on('show', function(e) {
+            $('#settings_plugin_marlin_eeprom_link a').on('show', function(e) {
                 if (self.isConnected() && !self.isMarlinFirmware()) {
                     self._requestFirmwareInfo();
                 }
@@ -1345,7 +1345,7 @@ $(function() {
 
                         var element = document.createElement('a');
                         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(self.backupConfig));
-                        element.setAttribute('download', 'eeprom_marlin_' + backupDate + '.cfg');
+                        element.setAttribute('download', 'marlin_eeprom_' + backupDate + '.cfg');
                         element.style.display = 'none';
                         document.body.appendChild(element);
 
@@ -1524,18 +1524,18 @@ $(function() {
 
                 reader.readAsText(f);
             }
-            $('#eeprom_marlin_upload').addClass("btn-primary");
+            $('#marlin_eeprom_upload').addClass("btn-primary");
         };
 
         self.setControls = function(state) {
             if (self.stateControls != state) {
                 self.stateControls = state;
 
-                $('#eeprom_marlin_load').prop('disabled', !state);
-                $('#eeprom_marlin_upload').prop('disabled', !state);
-                $('#eeprom_marlin_backup').prop('disabled', !state);
-                $('#eeprom_marlin_restore').prop('disabled', !state);
-                $('#eeprom_marlin_reset').prop('disabled', !state);
+                $('#marlin_eeprom_load').prop('disabled', !state);
+                $('#marlin_eeprom_upload').prop('disabled', !state);
+                $('#marlin_eeprom_backup').prop('disabled', !state);
+                $('#marlin_eeprom_restore').prop('disabled', !state);
+                $('#marlin_eeprom_reset').prop('disabled', !state);
             }
         };
 
@@ -1564,7 +1564,7 @@ $(function() {
 
             self._requestEepromData();
 
-            $('#eeprom_marlin_upload').removeClass("btn-primary");
+            $('#marlin_eeprom_upload').removeClass("btn-primary");
             hasChangedEepromForm = false;
         };
 
@@ -1719,7 +1719,7 @@ $(function() {
 
             self.control.sendCustomCommand({ command: cmd });
 
-            $('#eeprom_marlin_upload').removeClass("btn-primary");
+            $('#marlin_eeprom_upload').removeClass("btn-primary");
             hasChangedEepromForm = false;
 
             self.control.sendCustomCommand({ command: "M504" });
@@ -1755,13 +1755,13 @@ $(function() {
     OCTOPRINT_VIEWMODELS.push([
         EepromMarlinViewModel,
         ["controlViewModel", "connectionViewModel"],
-        "#settings_plugin_eeprom_marlin"
+        "#settings_plugin_marlin_eeprom"
     ]);
 });
 
 changedEepromForm = function() {
     if (!hasChangedEepromForm) {
-        $('#eeprom_marlin_upload').addClass("btn-primary");
+        $('#marlin_eeprom_upload').addClass("btn-primary");
         hasChangedEepromForm = true;
     }
 };
