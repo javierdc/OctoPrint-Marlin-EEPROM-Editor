@@ -15,7 +15,7 @@ class Marlin_eeprom_editorPlugin(octoprint.plugin.AssetPlugin,
                             octoprint.plugin.TemplatePlugin):
     def get_assets(self):
         return dict(
-            js=["js/eeprom_marlin.js"]
+            js=["js/marlin_eeprom_editor.js"]
         )
 
     def get_template_configs(self):
