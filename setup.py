@@ -4,24 +4,24 @@
 ### Do not forget to adjust the following variables to your own plugin.
 
 # The plugin's identifier, has to be unique
-plugin_identifier = "eeprom_editor_marlin"
+plugin_identifier = "marlin_eeprom_editor"
 
 # The plugin's python package, should be "octoprint_<plugin identifier>", has to be unique
-plugin_package = "octoprint_eeprom_editor_marlin"
+plugin_package = "octoprint_eeprom_editor"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "OctoPrint-EEprom-Editor-Marlin"
+plugin_name = "Marlin EEPROM Editor Plugin"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "1.0"
+plugin_version = "1.0.0"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
 plugin_description = """Makes it possible to change the EEPROM values of Marlin Firmware through OctoPrint based on OctoPrint-EEprom-Repetir by Salandora"""
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "iTmove"
+plugin_author = "javierdc"
 
 # The plugin's author's mail address.
 plugin_author_email = "support@itmove.com"

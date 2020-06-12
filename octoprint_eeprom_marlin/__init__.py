@@ -11,7 +11,7 @@ from __future__ import absolute_import
 import octoprint.plugin
 import octoprint.server
 
-class Eeprom_marlinPlugin(octoprint.plugin.AssetPlugin,
+class Marlin_eeprom_editorPlugin(octoprint.plugin.AssetPlugin,
                             octoprint.plugin.TemplatePlugin):
     def get_assets(self):
         return dict(
@@ -20,7 +20,7 @@ class Eeprom_marlinPlugin(octoprint.plugin.AssetPlugin,
 
     def get_template_configs(self):
         return [
-            dict(type="settings", template="eeprom_marlin_settings.jinja2", custom_bindings=True)
+            dict(type="settings", template="marlin_eeprom_settings.jinja2", custom_bindings=True)
         ]
 
     def get_update_information(self):
@@ -31,7 +31,7 @@ class Eeprom_marlinPlugin(octoprint.plugin.AssetPlugin,
 
                 # version check: github repository
                 type="github_release",
-                user="itmove",
+                user="javierdc",
                 repo="OctoPrint-Marlin-EEPROM-Editor",
                 current=self._plugin_version,
 
@@ -44,7 +44,7 @@ __plugin_name__ = "Marlin EEPROM Editor Plugin"
 
 def __plugin_load__():
     global __plugin_implementation__
-    __plugin_implementation__ = Eeprom_marlinPlugin()
+    __plugin_implementation__ = Marlin_eeprom_editorPlugin()
 
     global __plugin_hooks__
     __plugin_hooks__ = {
