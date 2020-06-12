@@ -7,7 +7,7 @@
 plugin_identifier = "marlin_eeprom_editor"
 
 # The plugin's python package, should be "octoprint_<plugin identifier>", has to be unique
-plugin_package = "octoprint_eeprom_editor"
+plugin_package = "octoprint_marlin_eeprom_editor"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
