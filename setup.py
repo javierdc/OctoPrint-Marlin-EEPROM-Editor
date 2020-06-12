@@ -11,10 +11,10 @@ plugin_package = "octoprint_marlin_eeprom_editor"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "Marlin EEPROM Editor Plugin"
+plugin_name = "OctoPrint-Marlin-EEprom-Editor"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "1.0.2"
+plugin_version = "1.0.3"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
@@ -27,7 +27,7 @@ plugin_author = "javierdc"
 plugin_author_email = "support@itmove.com"
 
 # The plugin's homepage URL. Can be overwritten within OctoPrint's internal data via __plugin_url__ in the plugin module
-plugin_url = "https://github.com/javierdc/OctoPrint-Marlin-EEPROM-Editor"
+plugin_url = "https://github.com/javierdc/OctoPrint-Marlin-EEprom-Editor"
 
 # The plugin's license. Can be overwritten within OctoPrint's internal data via __plugin_license__ in the plugin module
 plugin_license = "AGPLv3"

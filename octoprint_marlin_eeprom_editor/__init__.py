@@ -32,11 +32,11 @@ class Marlin_eeprom_editorPlugin(octoprint.plugin.AssetPlugin,
                 # version check: github repository
                 type="github_release",
                 user="javierdc",
-                repo="OctoPrint-Marlin-EEPROM-Editor",
+                repo="OctoPrint-Marlin-EEprom-Editor",
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/javierdc/OctoPrint-Marlin-EEPROM-Editor/archive/{target_version}.zip"
+                pip="https://github.com/javierdc/OctoPrint-Marlin-EEprom-Editor/archive/{target_version}.zip"
             )
         )
 
