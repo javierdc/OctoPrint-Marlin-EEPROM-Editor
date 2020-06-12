@@ -1,10 +1,10 @@
 <h4>Marlin EEPROM Editor Plugin</h4>
 This plugin is designed to get, change and save the values in the EEPROM of your Marlin Firmware based Machine.<br><br>
-<b>Firmware name:</b> <span data-bind="text: firmware_name()"></span>
-<b>Firmware info:</b> <span data-bind="text: firmware_info()"></span>
-<b>PlugIn Version:</b> <span data-bind="text: _plugin_version()"></span>
+<b>Firmware name:</b> <span data-bind="text: firmware_name()"></span><br>
+<b>Firmware info:</b> <span data-bind="text: firmware_info()"></span><br>
+<b>PlugIn Version:</b> <span data-bind="text: _plugin_version()"></span><br>
 <b>Is Marlin Firmware:</b> <span data-bind="text: isMarlinFirmware()"></span>
-<br><br>
+<br><br><br>
 <span style="color: red" data-bind="visible: isConnected() && !isMarlinFirmware()">Sorry. This plugin does not work with your machine, only Marlin based firmware</span>
 <span style="color: red" data-bind="visible: !isConnected()">Printer not connected.</span>
 <span style="color: red" data-bind="visible: isPrinting()">EEPROM settings are disabled if the printer is printing</span>
