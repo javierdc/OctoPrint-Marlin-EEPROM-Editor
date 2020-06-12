@@ -36,7 +36,7 @@ class Eeprom_marlinPlugin(octoprint.plugin.AssetPlugin,
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/houseofbugs/OctoPrint-EEPROM-Marlin/archive/{target_version}.zip"
+                pip="https://github.com/javierdc/OctoPrint-Marlin-EEPROM-Editor/archive/{target_version}.zip"
             )
         )
 
