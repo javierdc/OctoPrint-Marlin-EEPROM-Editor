@@ -1,7 +1,7 @@
 <h4>Marlin EEPROM Editor Plugin</h4>
 This plugin is designed to get, change and save the values in the EEPROM of your Marlin Firmware based Machine.<br><br>
 <b>Firmware name:</b> <span data-bind="text: firmware_name()"></span><br>
-<b>Firmware info:</b> <span data-bind="text: firmware_info()"></span><br>
+<b>Firmware info:</b> <span data-bind="text: eepromData1()"></span><br>
 <b>Is Marlin Firmware:</b> <span data-bind="visible: isMarlinFirmware()">TRUE</span>
 <br><br><br>
 <span style="color: red" data-bind="visible: isConnected() && !isMarlinFirmware()">Sorry. This plugin does not work with your machine, only Marlin based firmware</span>

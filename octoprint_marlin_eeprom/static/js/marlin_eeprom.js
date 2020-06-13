@@ -20,7 +20,7 @@ $(function() {
             self.eepromM203RegEx = /M203 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
             self.eepromM201RegEx = /M201 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
             self.eepromM206RegEx = /M206 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;
-            self.eepromM851RegEx = /M851 ([Z])(.*)/;
+            //self.eepromM851RegEx = /M851 ([Z])(.*)/;
             self.eepromM200RegEx = /M200 ([D])(.*)/;
             self.eepromM666RegEx = /M666 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;
             self.eepromM304RegEx = /M304 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)/;
@@ -145,6 +145,7 @@ $(function() {
         self.eepromDataDelta1 = ko.observableArray([]);
         self.eepromDataDelta2 = ko.observableArray([]);
         self.eepromDataLinear = ko.observableArray([]);
+
 
         self.onStartup = function() {
             $('#settings_plugin_marlin_eeprom_link a').on('show', function(e) {
