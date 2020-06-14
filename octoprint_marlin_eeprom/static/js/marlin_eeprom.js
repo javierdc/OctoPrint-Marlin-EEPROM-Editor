@@ -85,6 +85,7 @@ $(function() {
 
             // Specific versions
             if (version === "Marlin bugfix-2.0.x") {
+                console.log("Inside marlin bug fix"); //TODO: Remove
                 self.eepromM900RegEx = /M900 ([K])([0-9.]+)(.*)/;//bugfix2.0.x
                 //Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>
                 self.eepromM205RegEx = /M205 ([B])(.*)[^0-9]([S])(.*)[^0-9]([T])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
@@ -94,6 +95,7 @@ $(function() {
                 self.eepromM301RegEx = /M301 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)/;//hotend PID settings
                 self.eepromM204RegEx = /M204 ([P])(.*)[^0-9]([R])(.*)[^0-9]([T])(.*)/;//Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>
             } else if (version === 'latest' || version === 'Marlin 1.1.0-RC8' || version === 'Marlin 1.1.1' || version === 'Marlin 1.1.2' || version === 'Marlin 1.1.3' || version === 'Marlin 1.1.4' || version === 'Marlin 1.1.5' || version === 'Marlin 1.1.6' || version === 'Marlin 1.1.7' || version === 'Marlin 1.1.8') {
+                console.log("Inside latest"); //TODO: Remove
                 self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
                 self.eepromM145S0RegEx = /M145 S0 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
                 self.eepromM145S1RegEx = /M145 S1 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
@@ -102,6 +104,7 @@ $(function() {
                 self.eepromM204RegEx = /M204 ([P])(.*)[^0-9]([R])(.*)[^0-9]([T])(.*)/;
                 self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear Advance
             } else if (version === 'Marlin 1.1.0-RC1' || version === 'Marlin 1.1.0-RC2' || version === 'Marlin 1.1.0-RC3' || version === 'Marlin 1.1.0-RC4' || version === 'Marlin 1.1.0-RC5' || version === 'Marlin 1.1.0-RC6' || version === 'Marlin 1.1.0-RC7') {
+                console.log("Inside Marlin 1.1.0-RC1"); //TODO: Remove
                 self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
                 self.eepromM145S0RegEx = /M145 M0 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
                 self.eepromM145S1RegEx = /M145 M1 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
@@ -110,11 +113,13 @@ $(function() {
                 self.eepromM204RegEx = /M204 ([P])(.*)[^0-9]([R])(.*)[^0-9]([T])(.*)/;
                 self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear Advance
             } else if (version === 'Marlin 1.0.2+' || version === 'Marlin V1.0.2;' || version === 'Marlin 1.0.2' || version === 'Marlin V1;') {
+                console.log("Inside 1.0.2"); //TODO: Remove
                 self.eepromM204RegEx = /M204 ([S])(.*)[^0-9]([T])(.*)/;
                 self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
                 self.eepromM301RegEx = /M301 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)/;
                 self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear Advance
             } else {
+                console.log("Inside last else"); //TODO: Remove
                 self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
                 self.eepromM145S0RegEx = /M145 S0 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
                 self.eepromM145S1RegEx = /M145 S1 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
@@ -149,6 +154,8 @@ $(function() {
         self.isPrinting = ko.computed(function () {
             return self.connection.isPrinting() || self.connection.isPaused();
         });
+
+        console.log("observableArray:", ko.observableArray([])); //TODO: Remove
 
         self.eepromInfo1 = ko.observableArray([]);
         self.eepromData1 = ko.observableArray([]);
@@ -1625,7 +1632,8 @@ $(function() {
         });
 
         self.eepromDataCount = ko.computed(function () {
-            return (self.eepromData1().length + self.eepromData2().length) > 0;
+            //return (self.eepromData1().length + self.eepromData2().length) > 0;
+            return true;
         });
 
         self.eepromDataStepsCount = ko.computed(function () {
