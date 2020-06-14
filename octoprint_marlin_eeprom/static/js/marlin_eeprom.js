@@ -469,7 +469,7 @@ $(function() {
             // M851 Z-Probe Offset
             match = self.eepromM851RegEx.exec(line);
             if (match) {
-                self.eepromDataMaxAccel.push({
+                self.eepromData1.push({
                     dataType: 'M851 X',
                     label: 'X-Probe Offset',
                     origValue: ((restoreBackup) ? '' : match[2]),
@@ -478,7 +478,7 @@ $(function() {
                     description: ''
                 });
 
-                self.eepromDataMaxAccel.push({
+                self.eepromData1.push({
                     dataType: 'M851 Y',
                     label: 'Y-Probe Offset',
                     origValue: ((restoreBackup) ? '' : match[4]),
@@ -487,7 +487,7 @@ $(function() {
                     description: ''
                 });
 
-                self.eepromDataMaxAccel.push({
+                self.eepromData1.push({
                     dataType: 'M851 Z',
                     label: 'Z-Probe Offset',
                     origValue: ((restoreBackup) ? '' : match[6]),
