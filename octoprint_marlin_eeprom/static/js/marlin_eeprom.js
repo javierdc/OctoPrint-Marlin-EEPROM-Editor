@@ -64,7 +64,8 @@ $(function() {
             self.eepromM665RegEx = /M665 ([L])(.*)[^0-9]([R])(.*)[^0-9]([H])(.*)[^0-9]([S])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;//delta config
             self.eepromM666RegEx = /M666 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;//delta Enstop adjustement
 
-            self.eepromM851RegEx = /M851 ([Z])(.*)/;//Z-Probe Offset (mm)
+            //self.eepromM851RegEx = /M851 ([Z])(.*)/;//Z-Probe Offset (mm)
+            self.eepromM851RegEx = /M851 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;//Z-Probe Offset (mm)
 
             self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear advance factor
 
@@ -453,14 +454,44 @@ $(function() {
             }
 
             // M851 Z-Probe Offset
+            //match = self.eepromM851RegEx.exec(line);
+            // if (match) {
+            //     self.eepromData1.push({
+            //         dataType: 'M851 Z',
+            //         label: 'Z-Probe Offset',
+            //         origValue: ((restoreBackup) ? '' : match[2]),
+            //         value: match[2],
+            //         unit: 'mm',
+            //         description: ''
+            //     });
+            // }
+
+            // M851 Z-Probe Offset
             match = self.eepromM851RegEx.exec(line);
-            console.log("M851 Z-Probe Offset match: ", match);//todo remove
             if (match) {
-                self.eepromData1.push({
-                    dataType: 'M851 Z',
-                    label: 'Z-Probe Offset',
+                self.eepromDataMaxAccel.push({
+                    dataType: 'M851 X',
+                    label: 'X-Probe Offset',
                     origValue: ((restoreBackup) ? '' : match[2]),
                     value: match[2],
+                    unit: 'mm',
+                    description: ''
+                });
+
+                self.eepromDataMaxAccel.push({
+                    dataType: 'M851 Y',
+                    label: 'Y-Probe Offset',
+                    origValue: ((restoreBackup) ? '' : match[4]),
+                    value: match[4],
+                    unit: 'mm',
+                    description: ''
+                });
+
+                self.eepromDataMaxAccel.push({
+                    dataType: 'M851 Z',
+                    label: 'Z-Probe Offset',
+                    origValue: ((restoreBackup) ? '' : match[6]),
+                    value: match[6],
                     unit: 'mm',
                     description: ''
                 });
