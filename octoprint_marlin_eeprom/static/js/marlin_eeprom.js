@@ -155,8 +155,6 @@ $(function() {
             return self.connection.isPrinting() || self.connection.isPaused();
         });
 
-        console.log("observableArray:", ko.observableArray([])); //TODO: Remove
-
         self.eepromInfo1 = ko.observableArray([]);
         self.eepromData1 = ko.observableArray([]);
         self.eepromData2 = ko.observableArray([]);
@@ -177,6 +175,8 @@ $(function() {
         self.eepromDataDelta2 = ko.observableArray([]);
         self.eepromDataLinear = ko.observableArray([]);
         self.eepromTMCDrivers = ko.observableArray([]);
+
+        console.log("eepromInfo1:", self.eepromInfo1); //TODO: Remove
 
         self.onStartup = function () {
             $('#tab_plugin_eeprom_marlin_link a').on('show', function (e) {
@@ -707,6 +707,7 @@ $(function() {
             }
 
             if (self.firmware_name() === 'Marlin 1.1.0-RC8' || self.firmware_name() === 'Marlin 1.1.1' || self.firmware_name() === 'Marlin 1.1.2' || self.firmware_name() === 'Marlin 1.1.3' || self.firmware_name() === 'Marlin 1.1.4' || self.firmware_name() === 'Marlin 1.1.5' || self.firmware_name() === 'Marlin 1.1.6' || self.firmware_name() === 'Marlin 1.1.7' || self.firmware_name() === 'Marlin 1.1.8' || self.firmware_name() === 'Marlin bugfix-2.0.x' || self.firmware_name() === 'Marlin bugfix-2.0.x (Github)') {
+                console.log("Inside IF1"); //TODO: Remove
                 //console.log(self.firmware_name());
                 // M205 Advanced variables
                 match = self.eepromM205RegEx.exec(line);
@@ -946,6 +947,7 @@ $(function() {
                     }
                 }
             } else if (self.firmware_name() === 'Marlin 1.1.0-RC1' || self.firmware_name() === 'Marlin 1.1.0-RC2' || self.firmware_name() === 'Marlin 1.1.0-RC3' || self.firmware_name() === 'Marlin 1.1.0-RC4' || self.firmware_name() === 'Marlin 1.1.0-RC5' || self.firmware_name() === 'Marlin 1.1.0-RC6' || self.firmware_name() === 'Marlin 1.1.0-RC7') {
+                console.log("Inside IF2"); //TODO: Remove
                 // M205 Advanced variables
                 match = self.eepromM205RegEx.exec(line);
                 if (match) {
@@ -1178,6 +1180,7 @@ $(function() {
                     });
                 }
             } else if (self.firmware_name() === 'Marlin 1.0.2+' || self.firmware_name() === 'Marlin V1.0.2;' || self.firmware_name() === 'Marlin 1.0.2' || self.firmware_name() === 'Marlin V1;') {
+                console.log("Inside IF3"); //TODO: Remove
                 // M205 Advanced variables
                 match = self.eepromM205RegEx.exec(line);
                 if (match) {
@@ -1289,6 +1292,7 @@ $(function() {
                     });
                 }
             } else {
+                console.log("Inside else last"); //TODO: Remove
                 // M205 Advanced variables
                 match = self.eepromM205RegEx.exec(line);
                 if (match) {
@@ -1628,7 +1632,8 @@ $(function() {
         };
 
         self.eepromInfoCount = ko.computed(function () {
-            return (self.eepromInfo1().length) > 0;
+            //return (self.eepromInfo1().length) > 0;
+            return true;
         });
 
         self.eepromDataCount = ko.computed(function () {
@@ -1637,45 +1642,55 @@ $(function() {
         });
 
         self.eepromDataStepsCount = ko.computed(function () {
-            return self.eepromDataSteps().length > 0;
+            //return self.eepromDataSteps().length > 0;
+            return true;
         });
 
         self.eepromDataFRatesCount = ko.computed(function () {
-            return self.eepromDataFRates().length > 0;
+            //return self.eepromDataFRates().length > 0;
+            return true;
         });
 
         self.eepromDataMaxAccelCount = ko.computed(function () {
-            return self.eepromDataMaxAccel().length > 0;
+            //return self.eepromDataMaxAccel().length > 0;
+            return true;
         });
 
         self.eepromDataAccelCount = ko.computed(function () {
-            return self.eepromDataAccel().length > 0;
+            //return self.eepromDataAccel().length > 0;
+            return true;
         });
 
         self.eepromDataPIDCount = ko.computed(function () {
-            return (self.eepromDataPID().length + self.eepromDataPIDB().length) > 0;
+            //return (self.eepromDataPID().length + self.eepromDataPIDB().length) > 0;
+            return true;
         });
 
         self.eepromDataHomingCount = ko.computed(function () {
-            return self.eepromDataHoming().length > 0;
+            //return self.eepromDataHoming().length > 0;
+            return true;
         });
 
         self.eepromDataMaterialCount = ko.computed(function () {
-            return (self.eepromDataMaterialHS0().length + self.eepromDataMaterialHS1().length + self.eepromDataMaterialHS2().length) > 0;
+            //return (self.eepromDataMaterialHS0().length + self.eepromDataMaterialHS1().length + self.eepromDataMaterialHS2().length) > 0;
+            return true;
         });
 
         self.eepromDataFilamentCount = ko.computed(function () {
-            return self.eepromDataFilament().length > 0;
+            //return self.eepromDataFilament().length > 0;
+            return true;
         });
 
         self.eepromDataEndstopCount = ko.computed(function () {
-            return self.eepromDataEndstop().length > 0;
+            //return self.eepromDataEndstop().length > 0;
+            return true;
         });
         self.eepromDataDeltaCount = ko.computed(function () {
             return (self.eepromDataDelta1().length + self.eepromDataDelta2().length) > 0;
         });
         self.eepromDataTMCCount = ko.computed(function () {
-            return self.eepromTMCDrivers().length > 0;
+            //return self.eepromTMCDrivers().length > 0;
+            return true;
         });
 
         self.onEventConnected = function () {
