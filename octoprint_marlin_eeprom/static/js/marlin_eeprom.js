@@ -454,6 +454,7 @@ $(function() {
 
             // M851 Z-Probe Offset
             match = self.eepromM851RegEx.exec(line);
+            console.log("M851 Z-Probe Offset match: ", match);//todo remove
             if (match) {
                 self.eepromData1.push({
                     dataType: 'M851 Z',
@@ -1164,8 +1165,6 @@ $(function() {
                 }
             }
         };
-
-        console.log("self.eepromData1", self.eepromData1);//todo:remove
 
         self.fromHistoryData = function (data) {
             _.each(data.logs, function (line) {
