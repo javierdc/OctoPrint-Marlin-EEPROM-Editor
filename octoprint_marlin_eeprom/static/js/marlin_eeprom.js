@@ -38,7 +38,7 @@ $(function() {
             self.eepromM92E0RegEx = /M92 T0 ([E])(.*)/;//Steps per unit
             self.eepromM92E1RegEx = /M92 T1 ([E])(.*)/;//Steps per unit
 
-            self.eepromM92RegEx = /M92 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
+            self.eepromM92RegEx = /M92 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;//Axis steps per unit
 
             self.eepromM200DRegEx = /M200 ([T])(.*)[^0-9]([D])(.*)/;//Filament settings
             self.eepromM200RegEx = /M200 ([D])(.*)/;//Filament settings
@@ -46,12 +46,12 @@ $(function() {
             self.eepromM201E0RegEx = /M201 T0 ([E])(.*)/;//Steps per unit
             self.eepromM201E1RegEx = /M201 T1 ([E])(.*)/;//Steps per unit
 
-            self.eepromM201RegEx = /M201 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
+            self.eepromM201RegEx = /M201 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;//Print max accel
 
             self.eepromM203E0RegEx = /M203 T0 ([E])(.*)/;//Steps per unit
             self.eepromM203E1RegEx = /M203 T1 ([E])(.*)/;//Steps per unit
 
-            self.eepromM203RegEx = /M203 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
+            self.eepromM203RegEx = /M203 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;//Max feed rate
 
             self.eepromM206RegEx = /M206 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;//Home offset
 
@@ -59,14 +59,14 @@ $(function() {
 
             self.eepromM420RegEx = /M420 ([S])([0-1]*)[^0-9]*([Z]*)(.*)/;//Auto Bed Leveling
 
-            self.eepromM501RegEx = /M501/;
+            self.eepromM501RegEx = /M501/;//Restore settings
 
             self.eepromM665RegEx = /M665 ([L])(.*)[^0-9]([R])(.*)[^0-9]([H])(.*)[^0-9]([S])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;//delta config
             self.eepromM666RegEx = /M666 ([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)/;//delta Enstop adjustement
 
             self.eepromM851RegEx = /M851 ([Z])(.*)/;//Z-Probe Offset (mm)
 
-            self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;
+            self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear advance factor
 
             self.eepromM906ERegEx = /E driver current: (.*)/;//TMC current adjustement
             self.eepromM906E0RegEx = /E0 driver current: (.*)/;//TMC current adjustement
@@ -94,32 +94,9 @@ $(function() {
                 self.eepromM145S2RegEx = /M145 S2 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;//Material heatup parameters
                 self.eepromM301RegEx = /M301 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)/;//hotend PID settings
                 self.eepromM204RegEx = /M204 ([P])(.*)[^0-9]([R])(.*)[^0-9]([T])(.*)/;//Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>
-            } else if (version === 'latest' || version === 'Marlin 1.1.0-RC8' || version === 'Marlin 1.1.1' || version === 'Marlin 1.1.2' || version === 'Marlin 1.1.3' || version === 'Marlin 1.1.4' || version === 'Marlin 1.1.5' || version === 'Marlin 1.1.6' || version === 'Marlin 1.1.7' || version === 'Marlin 1.1.8') {
-                console.log("Inside latest"); //TODO: Remove
-                self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
-                self.eepromM145S0RegEx = /M145 S0 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
-                self.eepromM145S1RegEx = /M145 S1 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
-                self.eepromM145S2RegEx = /M145 S2 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
-                self.eepromM301RegEx = /M301 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)/;
-                self.eepromM204RegEx = /M204 ([P])(.*)[^0-9]([R])(.*)[^0-9]([T])(.*)/;
-                self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear Advance
-            } else if (version === 'Marlin 1.1.0-RC1' || version === 'Marlin 1.1.0-RC2' || version === 'Marlin 1.1.0-RC3' || version === 'Marlin 1.1.0-RC4' || version === 'Marlin 1.1.0-RC5' || version === 'Marlin 1.1.0-RC6' || version === 'Marlin 1.1.0-RC7') {
-                console.log("Inside Marlin 1.1.0-RC1"); //TODO: Remove
-                self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
-                self.eepromM145S0RegEx = /M145 M0 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
-                self.eepromM145S1RegEx = /M145 M1 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
-                self.eepromM145S2RegEx = /M145 M2 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
-                self.eepromM301RegEx = /M301 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)[^0-9]([C])(.*)[^0-9]([L])(.*)/;
-                self.eepromM204RegEx = /M204 ([P])(.*)[^0-9]([R])(.*)[^0-9]([T])(.*)/;
-                self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear Advance
-            } else if (version === 'Marlin 1.0.2+' || version === 'Marlin V1.0.2;' || version === 'Marlin 1.0.2' || version === 'Marlin V1;') {
-                console.log("Inside 1.0.2"); //TODO: Remove
-                self.eepromM204RegEx = /M204 ([S])(.*)[^0-9]([T])(.*)/;
-                self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
-                self.eepromM301RegEx = /M301 ([P])(.*)[^0-9]([I])(.*)[^0-9]([D])(.*)/;
-                self.eepromM900RegEx = /M900 ([K])(.*)[^0-9]([R])(.*)/;//Linear Advance
             } else {
-                console.log("Inside last else"); //TODO: Remove
+                // TODO: Add support for v1.x?
+                console.log("Inside latest"); //TODO: Remove
                 self.eepromM205RegEx = /M205 ([S])(.*)[^0-9]([T])(.*)[^0-9]([B])(.*)[^0-9]([X])(.*)[^0-9]([Y])(.*)[^0-9]([Z])(.*)[^0-9]([E])(.*)/;
                 self.eepromM145S0RegEx = /M145 S0 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
                 self.eepromM145S1RegEx = /M145 S1 ([H])(.*)[^0-9]([B])(.*)[^0-9]([F])(.*)/;
@@ -176,10 +153,8 @@ $(function() {
         self.eepromDataLinear = ko.observableArray([]);
         self.eepromTMCDrivers = ko.observableArray([]);
 
-        console.log("eepromInfo1:", self.eepromInfo1); //TODO: Remove
-
         self.onStartup = function () {
-            $('#tab_plugin_eeprom_marlin_link a').on('show', function (e) {
+            $('#tab_plugin_marlin_eeprom_link a').on('show', function (e) {
                 if (self.isConnected() && !self.isMarlinFirmware()) {
                     self._requestFirmwareInfo();
                 }
@@ -449,10 +424,10 @@ $(function() {
                     description: ''
                 });
             }
+
             // M201E0  Maximum Acceleration (mm/s2)
             match = self.eepromM201E0RegEx.exec(line);
             if (match) {
-
                 self.eepromDataMaxAccel.push({
                     dataType: 'M201 T0 E',
                     label: 'Extruder T0',
@@ -462,6 +437,7 @@ $(function() {
                     description: 'steps per unit'
                 });
             }
+
             // M201E1  Maximum Acceleration (mm/s2)
             match = self.eepromM201E1RegEx.exec(line);
             if (match) {
@@ -475,6 +451,7 @@ $(function() {
                     description: 'steps per unit'
                 });
             }
+
             // M851 Z-Probe Offset
             match = self.eepromM851RegEx.exec(line);
             if (match) {
@@ -708,7 +685,7 @@ $(function() {
 
             if (self.firmware_name() === 'Marlin 1.1.0-RC8' || self.firmware_name() === 'Marlin 1.1.1' || self.firmware_name() === 'Marlin 1.1.2' || self.firmware_name() === 'Marlin 1.1.3' || self.firmware_name() === 'Marlin 1.1.4' || self.firmware_name() === 'Marlin 1.1.5' || self.firmware_name() === 'Marlin 1.1.6' || self.firmware_name() === 'Marlin 1.1.7' || self.firmware_name() === 'Marlin 1.1.8' || self.firmware_name() === 'Marlin bugfix-2.0.x' || self.firmware_name() === 'Marlin bugfix-2.0.x (Github)') {
                 console.log("Inside IF1"); //TODO: Remove
-                //console.log(self.firmware_name());
+
                 // M205 Advanced variables
                 match = self.eepromM205RegEx.exec(line);
                 if (match) {
@@ -945,351 +922,6 @@ $(function() {
                             description: ''
                         });
                     }
-                }
-            } else if (self.firmware_name() === 'Marlin 1.1.0-RC1' || self.firmware_name() === 'Marlin 1.1.0-RC2' || self.firmware_name() === 'Marlin 1.1.0-RC3' || self.firmware_name() === 'Marlin 1.1.0-RC4' || self.firmware_name() === 'Marlin 1.1.0-RC5' || self.firmware_name() === 'Marlin 1.1.0-RC6' || self.firmware_name() === 'Marlin 1.1.0-RC7') {
-                console.log("Inside IF2"); //TODO: Remove
-                // M205 Advanced variables
-                match = self.eepromM205RegEx.exec(line);
-                if (match) {
-                    self.eepromData1.push({
-                        dataType: 'M205 S',
-                        label: 'Min feedrate',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData1.push({
-                        dataType: 'M205 T',
-                        label: 'Min travel',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData1.push({
-                        dataType: 'M205 B',
-                        label: 'Min segment',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 X',
-                        label: 'Max X jerk',
-                        origValue: ((restoreBackup) ? '' : match[8]),
-                        value: match[8],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 Y',
-                        label: 'Max Y jerk',
-                        origValue: ((restoreBackup) ? '' : match[10]),
-                        value: match[10],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 Z',
-                        label: 'Max Z jerk',
-                        origValue: ((restoreBackup) ? '' : match[12]),
-                        value: match[12],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 E',
-                        label: 'Max E jerk',
-                        origValue: ((restoreBackup) ? '' : match[14]),
-                        value: match[14],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-                }
-
-                // M204 Acceleration
-                match = self.eepromM204RegEx.exec(line);
-                if (match) {
-                    self.eepromDataAccel.push({
-                        dataType: 'M204 P',
-                        label: 'Printing moves',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: 'mm/s2',
-                        description: ''
-                    });
-
-                    self.eepromDataAccel.push({
-                        dataType: 'M204 R',
-                        label: 'Retract',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: 'mm/s2',
-                        description: ''
-                    });
-
-                    self.eepromDataAccel.push({
-                        dataType: 'M204 T',
-                        label: 'Travel',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: 'mm/s2',
-                        description: ''
-                    });
-                }
-
-                // M301 PID settings
-                match = self.eepromM301RegEx.exec(line);
-                if (match) {
-                    self.eepromDataPID.push({
-                        dataType: 'M301 P',
-                        label: 'Hotend Kp',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: 'term',
-                        description: ''
-                    });
-
-                    self.eepromDataPID.push({
-                        dataType: 'M301 I',
-                        label: 'Ki',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: 'term',
-                        description: ''
-                    });
-
-                    self.eepromDataPID.push({
-                        dataType: 'M301 D',
-                        label: 'Kd',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: 'term',
-                        description: ''
-                    });
-
-                    self.eepromDataPID.push({
-                        dataType: 'M301 C',
-                        label: 'Kc',
-                        origValue: ((restoreBackup) ? '' : match[8]),
-                        value: match[8],
-                        unit: 'term',
-                        description: ''
-                    });
-
-                    self.eepromDataPID.push({
-                        dataType: 'M301 L',
-                        label: 'LPQ',
-                        origValue: ((restoreBackup) ? '' : match[10]),
-                        value: match[10],
-                        unit: 'len',
-                        description: ''
-                    });
-                }
-
-                // M145 Material heatup
-                match = self.eepromM145S0RegEx.exec(line);
-                if (match) {
-                    self.eepromDataMaterialHS0.push({
-                        dataType: 'M145 M0 H',
-                        label: 'M0 Hotend Temperature',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: '',
-                        description: ''
-                    });
-                    self.eepromDataMaterialHS0.push({
-                        dataType: 'M145 M0 B',
-                        label: 'Bed Temperature',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: '',
-                        description: ''
-                    });
-                    self.eepromDataMaterialHS0.push({
-                        dataType: 'M145 M0 F',
-                        label: 'Fan Speed',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: '',
-                        description: ''
-                    });
-                }
-
-                match = self.eepromM145S1RegEx.exec(line);
-                if (match) {
-                    self.eepromDataMaterialHS1.push({
-                        dataType: 'M145 M1 H',
-                        label: 'M1 Hotend Temperature',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: '',
-                        description: ''
-                    });
-                    self.eepromDataMaterialHS1.push({
-                        dataType: 'M145 M1 B',
-                        label: 'Bed Temperature',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: '',
-                        description: ''
-                    });
-                    self.eepromDataMaterialHS1.push({
-                        dataType: 'M145 M1 F',
-                        label: 'Fan Speed',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: '',
-                        description: ''
-                    });
-                }
-
-                match = self.eepromM145S2RegEx.exec(line);
-                if (match) {
-                    self.eepromDataMaterialHS2.push({
-                        dataType: 'M145 M2 H',
-                        label: 'M2 Hotend Temperature',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: '',
-                        description: ''
-                    });
-                    self.eepromDataMaterialHS2.push({
-                        dataType: 'M145 M2 B',
-                        label: 'Bed Temperature',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: '',
-                        description: ''
-                    });
-                    self.eepromDataMaterialHS2.push({
-                        dataType: 'M145 M2 F',
-                        label: 'Fan Speed',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: '',
-                        description: ''
-                    });
-                }
-            } else if (self.firmware_name() === 'Marlin 1.0.2+' || self.firmware_name() === 'Marlin V1.0.2;' || self.firmware_name() === 'Marlin 1.0.2' || self.firmware_name() === 'Marlin V1;') {
-                console.log("Inside IF3"); //TODO: Remove
-                // M205 Advanced variables
-                match = self.eepromM205RegEx.exec(line);
-                if (match) {
-                    self.eepromData1.push({
-                        dataType: 'M205 S',
-                        label: 'Min feedrate',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData1.push({
-                        dataType: 'M205 T',
-                        label: 'Min travel',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData1.push({
-                        dataType: 'M205 B',
-                        label: 'Min segment',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 X',
-                        label: 'Max X jerk',
-                        origValue: ((restoreBackup) ? '' : match[8]),
-                        value: match[8],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 Z',
-                        label: 'Max Z jerk',
-                        origValue: ((restoreBackup) ? '' : match[10]),
-                        value: match[10],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-
-                    self.eepromData2.push({
-                        dataType: 'M205 E',
-                        label: 'Max E jerk',
-                        origValue: ((restoreBackup) ? '' : match[12]),
-                        value: match[12],
-                        unit: 'mm/s',
-                        description: ''
-                    });
-                }
-
-                // M204 Acceleration
-                match = self.eepromM204RegEx.exec(line);
-                if (match) {
-                    self.eepromDataAccel.push({
-                        dataType: 'M204 S',
-                        label: 'Printing moves',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: 'mm/s2',
-                        description: ''
-                    });
-
-                    self.eepromDataAccel.push({
-                        dataType: 'M204 T',
-                        label: 'Travel',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: 'mm/s2',
-                        description: ''
-                    });
-                }
-
-                // M301 PID settings
-                match = self.eepromM301RegEx.exec(line);
-                if (match) {
-                    self.eepromDataPID.push({
-                        dataType: 'M301 P',
-                        label: 'Hotend Kp',
-                        origValue: ((restoreBackup) ? '' : match[2]),
-                        value: match[2],
-                        unit: 'term',
-                        description: ''
-                    });
-
-                    self.eepromDataPID.push({
-                        dataType: 'M301 I',
-                        label: 'Ki',
-                        origValue: ((restoreBackup) ? '' : match[4]),
-                        value: match[4],
-                        unit: 'term',
-                        description: ''
-                    });
-
-                    self.eepromDataPID.push({
-                        dataType: 'M301 D',
-                        label: 'Kd',
-                        origValue: ((restoreBackup) ? '' : match[6]),
-                        value: match[6],
-                        unit: 'term',
-                        description: ''
-                    });
                 }
             } else {
                 console.log("Inside else last"); //TODO: Remove
@@ -1533,6 +1165,8 @@ $(function() {
             }
         };
 
+        console.log("self.eepromData1", self.eepromData1);//todo:remove
+
         self.fromHistoryData = function (data) {
             _.each(data.logs, function (line) {
                 var match = self.firmwareRegEx.exec(line);
@@ -1767,7 +1401,7 @@ $(function() {
             var backupDate = self.getCurrentDate();
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(self.currentConfig())));
-            element.setAttribute('download', 'adv_eeprom_marlin_' + backupDate + '.json');
+            element.setAttribute('download', 'adv_marlin_eeprom_' + backupDate + '.json');
             element.style.display = 'none';
             document.body.appendChild(element);
 
@@ -1864,18 +1498,18 @@ $(function() {
 
                 reader.readAsText(f);
             }
-            $('#eeprom_marlin_upload').addClass("btn-primary");
+            $('#marlin_eeprom_upload').addClass("btn-primary");
         };
 
         self.setControls = function (state) {
             if (self.stateControls !== state) {
                 self.stateControls = state;
 
-                $('#eeprom_marlin_load').prop('disabled', !state);
-                $('#eeprom_marlin_upload').prop('disabled', !state);
-                $('#eeprom_marlin_backup').prop('disabled', !state);
-                $('#eeprom_marlin_restore').prop('disabled', !state);
-                $('#eeprom_marlin_reset').prop('disabled', !state);
+                $('#marlin_eeprom_load').prop('disabled', !state);
+                $('#marlin_eeprom_upload').prop('disabled', !state);
+                $('#marlin_eeprom_backup').prop('disabled', !state);
+                $('#marlin_eeprom_restore').prop('disabled', !state);
+                $('#marlin_eeprom_reset').prop('disabled', !state);
             }
         };
 
@@ -1906,7 +1540,7 @@ $(function() {
             self._requestFirmwareInfo();
             self._requestEepromData();
 
-            $('#eeprom_marlin_upload').removeClass("btn-primary");
+            $('#marlin_eeprom_upload').removeClass("btn-primary");
             hasChangedEepromForm = false;
         };
 
@@ -2073,7 +1707,7 @@ $(function() {
             });
             self.sendCommand(cmd, 500);
 
-            $('#eeprom_marlin_upload').removeClass("btn-primary");
+            $('#marlin_eeprom_upload').removeClass("btn-primary");
             hasChangedEepromForm = false;
 
             self.sendCommand("M504", 0);
